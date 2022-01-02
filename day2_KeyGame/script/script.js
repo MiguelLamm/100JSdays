@@ -126,13 +126,16 @@ Timer = () =>{
         seconds++;
     }
 
-    if(seconds > 60){
+    if(seconds > 59){
         seconds = 0;
         minutes++;
     }
     let time = document.getElementById('time');
     if(seconds<10){
     time.innerHTML=`${minutes}:0${seconds}:${hundreds}`;
+    } else{
+        
+    time.innerHTML=`${minutes}:${seconds}:${hundreds}`;
     }
 }
 
