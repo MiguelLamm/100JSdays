@@ -7,7 +7,7 @@ let key = 0;
 // > 39 ^ 38 < 37 v 40
 window.onload = () => {
     let ran = Math.floor(Math.random() * 4);
-    //console.log(ran);
+    startTimer();
     switch (ran) {
         case 0:
             arrow.style.transform = `rotate(0deg)`;
@@ -62,6 +62,10 @@ document.onkeydown = (e) => {
         console.log(count);
 
         if (count === 30) {
+            stopTimer();
+            localStorage.setItem('minutes', minutes);
+            localStorage.setItem('seconds', seconds);
+            localStorage.setItem('hundreds', hundreds);
             localStorage.setItem('score', score);
             window.location.assign("result.html");
         }
@@ -103,6 +107,33 @@ check = () => {
     }
 }
 
+startTimer = () => {
+    interval = window.setInterval(Timer,10);
+  }
+
+stopTimer = () => {
+ window.clearInterval(interval);
+}
+let seconds = 0;
+let hundreds = 0;
+let minutes = 0;
+Timer = () =>{
+    hundreds++;
+    if(hundreds > 99){
+        hundreds = 0;
+        seconds++;
+    }
+
+    if(seconds > 60){
+        seconds = 0;
+        minutes++;
+    }
+    let time = document.getElementById('time');
+    if(seconds<10){
+    time.innerHTML=`${minutes}:0${seconds}:${hundreds}`;
+    }
+}
+
 bop = () => {
     let timer = setInterval(frame, 5);
     let length = 550;
@@ -118,12 +149,5 @@ bop = () => {
     }
 }
 
-let fi = window.localStorage.getItem('score');
-document.getElementById('resultscore').innerHTML = `Your score: ${fi} points`;
-if (fi <= 0) {
-    document.getElementById('msg').innerHTML = 'Did you do it on purpose or do you just fail at everything?'
-} else if (fi > 200) {
-    document.getElementById('msg').innerHTML = 'AMAZING PERFORMANCE!'
-} else if (0 <= fi <= 200) {
-    document.getElementById('msg').innerHTML = 'Doing good, keep going!'
-}
+
+
