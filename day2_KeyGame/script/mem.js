@@ -12,4 +12,6 @@ if (fi <= 0) {
 }
 if(se<10){
     document.getElementById('resulttime').innerHTML = `Your time: 0${mi}:0${se}:${hu}`;
+} else{
+    document.getElementById('resulttime').innerHTML = `Your time: 0${mi}:${se}:${hu}`;
 }

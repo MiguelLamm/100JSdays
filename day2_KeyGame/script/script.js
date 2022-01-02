@@ -7,7 +7,6 @@ let key = 0;
 // > 39 ^ 38 < 37 v 40
 window.onload = () => {
     let ran = Math.floor(Math.random() * 4);
-    startTimer();
     switch (ran) {
         case 0:
             arrow.style.transform = `rotate(0deg)`;
@@ -56,6 +55,9 @@ document.onkeydown = (e) => {
                 direction = ran;
                 count++
                 break;
+        }
+        if(count===1){
+            startTimer();
         }
         bop();
         changeBG();
