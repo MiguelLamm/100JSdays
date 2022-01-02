@@ -24,6 +24,12 @@ h1{
     padding-bottom: 10px;
 }
 
+h2{
+    font-size: 30px;
+    font-family: sans-serif;
+    padding-bottom: 10px;
+}
+
 p{
     font-family: sans-serif;
     margin-bottom: 50px;
