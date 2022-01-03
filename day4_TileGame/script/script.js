@@ -1,7 +1,8 @@
 let container = document.getElementById('container');
 
+let txt = document.getElementById('score');
 let clickedTile = 0;
-
+let score = 0;
 let array = [];
 startInterval = () => {
     goofy = window.setInterval(Color,200);
@@ -21,7 +22,10 @@ Color = () =>{
         Color();
         if(array.length===16){
             stopInterval();
-            
+            localStorage.setItem('minutes', minutes);
+            localStorage.setItem('seconds', seconds);
+            localStorage.setItem('hundreds', hundreds);
+            localStorage.setItem('score', score);
             window.location.assign("result.html");
         }
     }
@@ -35,6 +39,8 @@ numberCheck = () => {
     
             array.splice(i, 1); 
             container.getElementsByTagName('div')[clickedTile].style.backgroundColor='white';
+            score+= 10;
+            txt.innerHTML = `Your score: ${score}`;
         }
     
     }
