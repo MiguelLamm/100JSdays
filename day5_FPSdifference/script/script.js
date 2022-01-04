@@ -1,92 +1,46 @@
-let container = document.getElementById('container');
+let pos1x = 0;
+let pos2x = 0;
+let pos3x = 0;
 
-let txt = document.getElementById('score');
-let clickedTile = 0;
-let score = 0;
-let array = [];
+let block1 = document.getElementById('block1');
+let block2 = document.getElementById('block2');
+let block3 = document.getElementById('block3');
+
+let container = document.querySelector('.container');
 startInterval = () => {
-    goofy = window.setInterval(Color,200);
+    goofy = window.setInterval(moveFast,10);
+  }
+  startInterval2 = () => {
+    goofy2 = window.setInterval(moveMed,100);
+  }
+  startInterval3 = () => {
+    goofy3 = window.setInterval(moveSlow,250);
   }
 
 stopInterval = () => {
  window.clearInterval(goofy);
 }
 
-Color = () =>{
-    let ran = Math.floor(Math.random() * 16);
-    if(array.every(num => num != ran)){
-        tile = container.getElementsByTagName('div')[ran].style.backgroundColor='red';
-        array.push(ran);
+moveFast = () =>{
+    pos1x+= 1;
+    block1.style.left = `${pos1x}px`;
+    if(pos1x >= container.offsetWidth){
+        pos1x=0;
+        pos2x=0;
+        pos3x=0;
     }
-    else{
-        Color();
-        if(array.length===16){
-            stopInterval();
-            localStorage.setItem('minutes', minutes);
-            localStorage.setItem('seconds', seconds);
-            localStorage.setItem('hundreds', hundreds);
-            localStorage.setItem('score', score);
-            window.location.assign("result.html");
-        }
-    }
-    console.log(array);
 }
-
-numberCheck = () => {
-    for( let i = 0; i < array.length; i++){ 
+moveMed = () =>{
+    pos2x+= 10;
+    block2.style.left = `${pos2x}px`;
     
-        if ( array[i] === clickedTile) { 
-    
-            array.splice(i, 1); 
-            container.getElementsByTagName('div')[clickedTile].style.backgroundColor='white';
-            score+= 10;
-            txt.innerHTML = `Your score: ${score}`;
-        }
-    
-    }
-    console.log(array);
-    return array;
+}
+moveSlow = () =>{
+    pos3x+= 25;
+    block3.style.left = `${pos3x}px`;
 }
 
-startTimer = () => {
-    interval = window.setInterval(Timer,10);
-  }
-
-stopTimer = () => {
- window.clearInterval(interval);
-}
-let seconds = 0;
-let hundreds = 0;
-let minutes = 0;
-Timer = () =>{
-    hundreds++;
-    if(hundreds > 99){
-        hundreds = 0;
-        seconds++;
-    }
-
-    if(seconds > 59){
-        seconds = 0;
-        minutes++;
-    }
-    let time = document.getElementById('time');
-    if(seconds<10){
-    time.innerHTML=`${minutes}:0${seconds}:${hundreds}`;
-    } else{
-        
-    time.innerHTML=`${minutes}:${seconds}:${hundreds}`;
-    }
-}
-
-startTimer();
-
-let clicked = document.getElementsByTagName('div');
-document.addEventListener('click', console.log(clicked))
- startInterval();
-
-
-$(".tile").click(function() {
-    clickedTile = $(this).index();
-    console.log(clickedTile);
-    numberCheck();
-});
+console.log(container.offsetWidth);
+startInterval();
+startInterval2();
+startInterval3();
