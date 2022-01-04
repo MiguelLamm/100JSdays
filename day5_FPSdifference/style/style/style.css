@@ -1,0 +1,20 @@
+.container {  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-auto-columns: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "first"
+    "sec"
+    "thi"
+    "four";
+}
+
+.first { grid-area: first; }
+
+.sec { grid-area: sec; }
+
+.thi { grid-area: thi; }
+
+.four { grid-area: four; }
