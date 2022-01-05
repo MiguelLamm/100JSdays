@@ -42,7 +42,7 @@ p{
     font-weight: bold;
 }
 
-#linkPlay{
+.linkPlay{
     text-decoration: none;
     font-family: sans-serif;
     font-size: 30px;
