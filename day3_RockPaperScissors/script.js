@@ -74,6 +74,8 @@ const determineWinner = (userChoice, computerChoice) => {
         } else {
             return 'Computer won!';
         }
+    } else {
+        return 'That is not a valid item';
     }
 }
 
@@ -81,7 +83,7 @@ const playGame = (selectedValue) => {
     const userChoice = getUserChoice(selectedValue);
     const computerChoice = getComputerChoice();
     console.log('You threw: ' + userChoice);
-    document.getElementById('cpu').innerHTML=`computer chooses ${computerChoice}`;
+    document.getElementById('cpu').innerHTML=`The computer chooses ${computerChoice}`;
     document.getElementById('result').innerHTML=`${determineWinner(userChoice, computerChoice)}`;
     console.log('The computer threw:' + computerChoice);
     // console.log(determineWinner(userChoice, computerChoice));
